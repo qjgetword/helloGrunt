@@ -1,0 +1,19 @@
+{
+  "name": "hellogrunt",
+  "version": "1.0.0",
+  "description": "npm init 生成package.json文件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qjgetword/helloGrunt.git"
+  },
+  "author": "jingqu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qjgetword/helloGrunt/issues"
+  },
+  "homepage": "https://github.com/qjgetword/helloGrunt#readme"
+}

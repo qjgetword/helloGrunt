@@ -290,5 +290,7 @@
       "THREE": true,
       "TWEEN": true,
       "Stats":true
-    }
+    },
+    // 预定义不检查的全局变量
+    "predef":["define", "BMap", "angular", "BMAP_STATUS_SUCCESS"]
   }

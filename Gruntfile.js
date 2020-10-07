@@ -9,25 +9,21 @@ module.exports = function(grunt) {
          // Deletes all .js files, but skips min.js files
         js: ['build/js/*.js', '!build/js/*.min.js'], 
         // 自定义
-        my_default: ['build'],
+        myDefault: ['build']
       },
       concat:{
        options:{
-         separator:";"
+         separator: ';'
        },
        dist:{
-         src: ["src/js/*.js"],
-         dest: "build/js/build.js"
+         src: ['src/js/*.js'],
+         dest: 'build/js/build.js'
        }
       },
       jshint: {
         files: ['Gruntfile.js', 'src/**/*.js'],
         options: {
-          globals: {
-            jQuery: true,
-            console: true,
-            module: true
-          }
+         jshintrc: '.jshintrc'
         }
       },
       qunit: {
@@ -59,7 +55,7 @@ module.exports = function(grunt) {
     // 压缩HTML
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
    // 压缩图片无损
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    // grunt.loadNpmTasks('grunt-contrib-imagemin');
     // 压缩合并css
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     // 实时监控文件变化
@@ -71,7 +67,7 @@ module.exports = function(grunt) {
   
     // 默认被执行的任务列表。
     // 注册任务
-    grunt.registerTask('con', ['clean：my_default','concat', 'uglify']);
+    grunt.registerTask('con', ['clean：myDefault','concat', 'uglify']);
     grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
   
   };

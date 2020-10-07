@@ -4,6 +4,22 @@ module.exports = function(grunt) {
     // 初始化
     grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
+     
+      clean: {
+         // Deletes all .js files, but skips min.js files
+        js: ['build/js/*.js', '!build/js/*.min.js'], 
+        // 自定义
+        my_default: ['build'],
+      },
+      concat:{
+       options:{
+         separator:";"
+       },
+       dist:{
+         src: ["src/js/*.js"],
+         dest: "build/js/build.js"
+       }
+      },
       jshint: {
         files: ['Gruntfile.js', 'src/**/*.js'],
         options: {
@@ -23,11 +39,11 @@ module.exports = function(grunt) {
       },
       uglify: {
         options: {
-          banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+          banner: '/*! <%= pkg.name %> -v<%= pkg.version %>- <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
         build: {
-          src: 'src/<%= pkg.name %>.js',
-          dest: 'build/<%= pkg.name %>.min.js'
+          src: '<%= concat.dist.dest %>',
+          dest: 'build/js/build.min.js'
         }
       }
     });
@@ -50,11 +66,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     // 压缩js文件
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    
+
     grunt.loadNpmTasks('grunt-contrib-qunit');
   
     // 默认被执行的任务列表。
     // 注册任务
+    grunt.registerTask('con', ['clean：my_default','concat', 'uglify']);
     grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
   
   };

@@ -61,8 +61,11 @@ module.exports = function(grunt) {
         }
       },
       watch: {
-        files: ['<%= jshint.files %>','<%= cssmin.dist.src %>'],
-        tasks: ['con']
+        script:{
+          files: ['<%= jshint.files %>','<%= cssmin.dist.src %>'],
+          tasks: ['clean:myDefault','concat', 'uglify','cssmin'],
+          options:{spawn: false} // 变量更新   true 全量更新
+        }
       },
     });
   

@@ -6,4 +6,4 @@ npm init 生成package.json文件
 
 添加watch监听任务
 
-grunt watch 运行  
+grunt watch --运行  

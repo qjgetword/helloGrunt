@@ -1,2 +1,2 @@
-let aa=10;
+var aa=10;
 console.log(aa);

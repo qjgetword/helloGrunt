@@ -55,12 +55,12 @@ module.exports = function(grunt) {
       // }
       cssmin: {
         options: {
-          mergeIntoShorthands: false,
+          mergeIntoShorthands: false, // 快速压缩 false
           roundingPrecision: -1
         },
-        target: {
+        build: {
           files: {
-            'build/css/output.min.css': ['src/css/*.css']
+            'build/css/build.min.css': ['src/css/*.css']
           }
         }
       }
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
   
     // 默认被执行的任务列表。
     // 注册任务
-    grunt.registerTask('con', ['clean：myDefault','concat', 'uglify']);
-    grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+    grunt.registerTask('con', ['clean:myDefault','concat', 'uglify','cssmin']);
+    grunt.registerTask('default', ['con']);
   
   };

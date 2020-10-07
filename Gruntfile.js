@@ -41,6 +41,28 @@ module.exports = function(grunt) {
           src: '<%= concat.dist.dest %>',
           dest: 'build/js/build.min.js'
         }
+      },
+      // cssmin: {
+      //   target: {
+      //     files: [{
+      //       expand: true,
+      //       cwd: 'build/css',
+      //       src: ['src/css/*.css'],
+      //       dest: 'build/css',
+      //       ext: '.min.css'
+      //     }]
+      //   }
+      // }
+      cssmin: {
+        options: {
+          mergeIntoShorthands: false,
+          roundingPrecision: -1
+        },
+        target: {
+          files: {
+            'build/css/output.min.css': ['src/css/*.css']
+          }
+        }
       }
     });
   

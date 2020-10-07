@@ -29,10 +29,7 @@ module.exports = function(grunt) {
       qunit: {
         files: ['src/**/*.html']
       },
-      watch: {
-        files: ['<%= jshint.files %>'],
-        tasks: ['jshint']
-      },
+      
       uglify: {
         options: {
           banner: '/*! <%= pkg.name %> -v<%= pkg.version %>- <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -58,12 +55,15 @@ module.exports = function(grunt) {
           mergeIntoShorthands: false, // 快速压缩 false
           roundingPrecision: -1
         },
-        build: {
-          files: {
-            'build/css/build.min.css': ['src/css/*.css']
-          }
+        dist:{
+          src: ['src/css/*.css'],
+          dest: 'build/css/build.min.css'
         }
-      }
+      },
+      watch: {
+        files: ['<%= jshint.files %>','<%= cssmin.dist.src %>'],
+        tasks: ['con']
+      },
     });
   
     // 加载包含 "uglify" 任务的插件。

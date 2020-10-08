@@ -4,6 +4,6 @@ git pull
 
 git add .
 
-git commit -m "压缩css文件"
+git commit -m "测试代码提交"
 
 git push

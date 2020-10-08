@@ -12,5 +12,5 @@ grunt
 
 添加watch监听任务
 
-3.浏览器运行
+3. 浏览器运行
 grunt serve --运行  
